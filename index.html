@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arth Path Financial — Guiding Families. Protecting Today. Securing Tomorrow.</title>
+<meta name="description" content="Arth Path Financial is a fee-only independent financial advisory firm helping families across the US plan, protect and grow their wealth. No commissions. No product sales. Just honest advice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green:   #1B3A6B;
+    --green2:  #0D2347;
+    --gold:    #C49A2E;
+    --gold2:   #D9AF52;
+    --cream:   #EEF3FB;
+    --white:   #FFFFFF;
+    --text:    #0D1B2E;
+    --muted:   #5A6F8A;
+    --border:  #D4DEF0;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; line-height: 1.7;
+    color: var(--text); background: var(--white);
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,35,71,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,154,46,0.18);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; max-width: 1100px; margin: 0 auto;
+  }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.78); font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold2); }
+  .nav-cta {
+    background: var(--gold); color: var(--white);
+    padding: 10px 22px; border-radius: 4px;
+    font-size: 14px; font-weight: 600; border: none; cursor: pointer;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--gold2); }
+  .nav-hamburger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: white; margin: 5px 0; transition: all .3s; }
+
+  /* MOBILE NAV */
+  .mobile-nav {
+    display: none; flex-direction: column;
+    background: #0D2347;
+    border-top: 1px solid rgba(196,154,46,0.12);
+    padding: 12px 24px 20px;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    color: rgba(255,255,255,0.78); font-size: 15px; font-weight: 500;
+    padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .mobile-nav a:last-of-type { border-bottom: none; }
+  .mobile-nav .mob-cta {
+    margin-top: 14px; background: var(--gold); color: white;
+    padding: 13px; border-radius: 4px; text-align: center;
+    font-weight: 600; font-size: 15px; border: none; cursor: pointer;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; pointer-events: none; transition: opacity .3s;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+  .modal {
+    background: var(--white); border-radius: 10px;
+    width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto;
+    transform: translateY(20px); transition: transform .3s; position: relative;
+  }
+  .modal-overlay.active .modal { transform: translateY(0); }
+  .modal-header {
+    background: linear-gradient(135deg, #1B3A6B 0%, #0D2347 100%);
+    padding: 30px 32px 26px; border-radius: 10px 10px 0 0;
+  }
+  .modal-eyebrow { font-size: 11px; color: var(--gold2); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+  .modal-title { font-family: 'Playfair Display', serif; font-size: 24px; color: white; line-height: 1.25; }
+  .modal-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; }
+  .modal-close {
+    position: absolute; top: 14px; right: 18px;
+    background: rgba(255,255,255,0.1); border: none; color: white;
+    width: 30px; height: 30px; border-radius: 50%; font-size: 16px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.2); }
+  .modal-body { padding: 28px 32px 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--green); margin-bottom: 5px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 11px 13px;
+    border: 1.5px solid var(--border); border-radius: 6px;
+    font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text);
+    background: var(--white); outline: none; transition: border-color .2s; appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235A6F8A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 13px center; padding-right: 34px;
+  }
+  .form-submit {
+    width: 100%; padding: 15px; background: var(--gold);
+    color: white; border: none; border-radius: 6px;
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: background .2s, transform .15s; margin-top: 4px;
+  }
+  .form-submit:hover { background: var(--gold2); transform: translateY(-1px); }
+  .form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+  .form-success { display: none; text-align: center; padding: 16px 0; }
+  .form-success.show { display: block; }
+  .success-icon { font-size: 44px; margin-bottom: 14px; }
+  .success-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--green); margin-bottom: 8px; }
+  .success-body { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+  /* HERO */
+  .hero {
+    background: var(--green2);
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 120px 0 80px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 65% 40%, rgba(196,154,46,0.09) 0%, transparent 65%);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .hero-tag {
+    display: inline-block; color: var(--gold2);
+    font-size: 12px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 4.5vw, 54px); color: var(--white);
+    font-weight: 700; margin-bottom: 22px; line-height: 1.12;
+  }
+  .hero h1 em { color: var(--gold2); font-style: italic; }
+  .hero-body { color: rgba(255,255,255,0.68); font-size: 17px; line-height: 1.85; margin-bottom: 38px; max-width: 460px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--white);
+    padding: 15px 30px; border-radius: 4px; font-weight: 600; font-size: 15px;
+    border: none; cursor: pointer; transition: background .2s, transform .15s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.28); color: rgba(255,255,255,0.82);
+    padding: 15px 30px; border-radius: 4px; font-weight: 500; font-size: 15px;
+    background: none; cursor: pointer; transition: border-color .2s, color .2s; display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold2); color: var(--gold2); }
+  .hero-visual { display: flex; align-items: center; justify-content: center; }
+  .hero-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(196,154,46,0.18);
+    border-radius: 10px; padding: 36px; color: white; width: 100%;
+  }
+  .hero-card-label { font-size: 11px; color: var(--gold2); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 20px; }
+  .hero-pillars { display: flex; flex-direction: column; gap: 14px; }
+  .hero-pillar {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px; border-radius: 8px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+  }
+  .pillar-icon {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(196,154,46,0.16);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+  }
+  .pillar-text strong { display: block; color: white; font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+  .pillar-text span { font-size: 12px; color: rgba(255,255,255,0.45); }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--cream); border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border); padding: 18px 0; overflow: hidden;
+  }
+  .trust-track {
+    display: flex; align-items: center; gap: 56px;
+    animation: marquee 22s linear infinite; white-space: nowrap; width: max-content;
+  }
+  .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--green); }
+  .trust-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 96px 0; }
+  .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .sec-title { font-size: clamp(26px, 3.6vw, 40px); color: var(--green); margin-bottom: 18px; }
+  .sec-intro { font-size: 17px; color: var(--muted); line-height: 1.82; max-width: 580px; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .about-image { position: relative; aspect-ratio: 3/4; border-radius: 6px; overflow: visible; }
+  .about-img-box {
+    width: 100%; height: 100%; border-radius: 6px; overflow: hidden;
+    background: linear-gradient(135deg, #1B3A6B 0%, #0D2347 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.35); gap: 10px;
+  }
+  .about-img-box .icon { font-size: 56px; }
+  .about-img-box p { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .about-badge {
+    position: absolute; bottom: -18px; right: -18px;
+    background: var(--gold); color: white;
+    padding: 18px 22px; border-radius: 8px;
+    font-family: 'Playfair Display', serif; font-size: 13px; line-height: 1.4; text-align: center;
+  }
+  .about-badge strong { display: block; font-size: 26px; }
+  .about-body { font-size: 17px; color: #3A4F6A; line-height: 1.88; margin-bottom: 20px; }
+  .about-body strong { color: var(--green); }
+  .about-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--gold); font-weight: 600; font-size: 14px;
+    border-bottom: 1px solid rgba(196,154,46,0.3); padding-bottom: 2px; transition: border-color .2s;
+  }
+  .about-link:hover { border-color: var(--gold); }
+
+  /* PROBLEM */
+  .problem { background: var(--green2); }
+  .problem .eyebrow { color: var(--gold2); }
+  .problem-title { font-size: clamp(26px, 3.6vw, 40px); color: white; margin-bottom: 20px; max-width: 620px; }
+  .problem-body { font-size: 17px; color: rgba(255,255,255,0.62); line-height: 1.9; max-width: 620px; }
+  .problem-body p { margin-bottom: 16px; }
+  .problem-body p:last-child { margin-bottom: 0; }
+
+  /* SERVICES */
+  .services { background: var(--cream); }
+  .services-header { max-width: 540px; margin-bottom: 56px; }
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); }
+  .service-card { background: var(--white); padding: 44px 38px; transition: background .2s; }
+  .service-card:hover { background: #FAFAF7; }
+  .svc-num { font-family: 'Playfair Display', serif; font-size: 44px; color: rgba(196,154,46,0.14); font-weight: 700; line-height: 1; margin-bottom: 18px; }
+  .svc-line { width: 28px; height: 2px; background: var(--gold); margin-bottom: 18px; }
+  .svc-title { font-size: 20px; color: var(--green); margin-bottom: 10px; }
+  .svc-desc { font-size: 15px; color: var(--muted); line-height: 1.78; }
+
+  /* PROCESS */
+  .process { background: var(--white); }
+  .process-header { max-width: 560px; margin-bottom: 12px; }
+  .process-sub { font-size: 16px; color: var(--muted); margin-bottom: 56px; line-height: 1.8; }
+  .process-steps { display: flex; flex-direction: column; }
+  .process-step {
+    display: grid; grid-template-columns: 72px 1fr; gap: 28px;
+    padding: 36px 0; border-bottom: 1px solid var(--border); align-items: start;
+  }
+  .process-step:last-child { border-bottom: none; }
+  .step-num { font-family: 'Playfair Display', serif; font-size: 44px; color: var(--gold); font-weight: 700; line-height: 1; opacity: 0.35; }
+  .step-title { font-size: 20px; color: var(--green); margin-bottom: 8px; padding-top: 6px; }
+  .step-desc { font-size: 15px; color: var(--muted); line-height: 1.78; }
+  .process-cta { margin-top: 56px; text-align: center; }
+  .process-cta-note { font-size: 13px; color: var(--muted); margin-top: 12px; }
+
+  /* STATS */
+  .stats { background: var(--green2); padding: 80px 0; }
+  .stats .eyebrow { color: var(--gold2); }
+  .stats-title { font-size: clamp(24px, 3.4vw, 38px); color: white; margin-bottom: 14px; }
+  .stats-intro { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 520px; margin-bottom: 56px; line-height: 1.8; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: rgba(255,255,255,0.07); }
+  .stat-card { background: rgba(255,255,255,0.03); padding: 36px 28px; }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4.5vw, 52px); font-weight: 700; color: var(--gold2); line-height: 1; margin-bottom: 8px; }
+  .stat-label { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 500; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--cream); overflow: hidden; }
+  .testimonials-header { max-width: 540px; margin-bottom: 48px; }
+  .test-track {
+    display: flex; gap: 20px;
+    animation: marquee 38s linear infinite; width: max-content;
+  }
+  .test-track:hover { animation-play-state: paused; }
+  .test-card {
+    background: var(--white); border-radius: 6px;
+    padding: 32px 28px; width: 340px; flex-shrink: 0;
+    border: 1px solid var(--border);
+  }
+  .test-quote { font-size: 14px; line-height: 1.82; color: #2e3d33; margin-bottom: 20px; font-style: italic; }
+  .test-quote::before { content: '\201C'; color: var(--gold); font-size: 28px; font-family: 'Playfair Display', serif; line-height: 0; vertical-align: -10px; margin-right: 3px; }
+  .test-attr { font-size: 12px; font-weight: 600; color: var(--green); }
+
+  /* FAQs */
+  .faqs { background: var(--white); }
+  .faqs-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 72px; align-items: start; }
+  .faqs-sidebar .sec-title { font-size: 28px; }
+  .faqs-sidebar p { font-size: 15px; color: var(--muted); margin-top: 14px; line-height: 1.8; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 18px;
+    padding: 24px 0; cursor: pointer;
+    font-size: 15px; font-weight: 600; color: var(--green); transition: color .2s;
+  }
+  .faq-q:hover { color: var(--gold); }
+  .faq-icon {
+    flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--cream); display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: var(--gold); transition: transform .3s;
+  }
+  .faq-a {
+    font-size: 15px; color: var(--muted); line-height: 1.88;
+    max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; padding-bottom: 0;
+  }
+  .faq-item.open .faq-a { max-height: 400px; padding-bottom: 24px; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--gold); color: white; }
+
+  /* CTA */
+  .cta-sec {
+    background: linear-gradient(135deg, #1B3A6B 0%, #0D2347 100%);
+    padding: 96px 0; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-sec::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 360px; height: 360px; border-radius: 50%;
+    background: rgba(196,154,46,0.05);
+  }
+  .cta-eyebrow { color: var(--gold2); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; margin-bottom: 18px; }
+  .cta-title { font-size: clamp(26px, 3.8vw, 40px); color: white; max-width: 560px; margin: 0 auto 18px; }
+  .cta-body { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 440px; margin: 0 auto 36px; line-height: 1.8; }
+  .cta-note { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 14px; }
+
+  /* FOOTER */
+  footer { background: var(--green2); border-top: 1px solid rgba(196,154,46,0.18); padding: 40px 0; }
+  .footer-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+  .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.48); font-size: 13px; transition: color .2s; }
+  .footer-links a:hover { color: var(--gold2); }
+  .footer-copy { color: rgba(255,255,255,0.28); font-size: 12px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-grid, .about-grid, .faqs-grid { grid-template-columns: 1fr; gap: 44px; }
+    .hero-visual { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+    section { padding: 68px 0; }
+  }
+  @media (max-width: 600px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .hero { padding: 96px 0 56px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+  [data-reveal].revealed { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#">
+      <img src="Arth_logo.png" alt="Arth Path Financial" style="height:62px;width:auto;display:block;">
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="services.html">Services</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
+      <button class="nav-cta book-trigger">Book a Free Call</button>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about" class="mob-link">About</a>
+    <a href="services.html" class="mob-link">Services</a>
+    <a href="faqs.html" class="mob-link">FAQs</a>
+    <a href="contact.html" class="mob-link">Contact</a>
+    <button class="mob-cta book-trigger">Book a Free Call</button>
+  </div>
+</nav>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div class="modal-eyebrow">Free 30-minute call</div>
+      <h2 class="modal-title">Book your discovery call</h2>
+      <p class="modal-sub">No obligation. No sales pitch. Just a conversation.</p>
+    </div>
+    <div class="modal-body">
+      <form id="bookingForm" action="https://formspree.io/f/mqeojvlq" method="POST" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First name *</label>
+            <input type="text" id="fname" placeholder="Raj" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name *</label>
+            <input type="text" id="lname" placeholder="Sharma" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="femail">Email address *</label>
+          <input type="email" id="femail" placeholder="raj@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="fphone">Phone number *</label>
+          <input type="tel" id="fphone" placeholder="+91 98765 43210" required>
+        </div>
+        <div class="form-group">
+          <label for="ftopic">What would you like to discuss?</label>
+          <select id="ftopic">
+            <option value="">Select a topic</option>
+            <option>Financial planning for my family</option>
+            <option>Investment portfolio review</option>
+            <option>Retirement planning</option>
+            <option>Insurance and protection planning</option>
+            <option>Legacy and estate planning</option>
+            <option>General financial check</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fmsg">Anything you would like us to know beforehand?</label>
+          <textarea id="fmsg" placeholder="Tell us a little about your situation..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send My Request</button>
+        <p class="form-note">We will respond within one business day to confirm your call time.</p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">✅</div>
+        <h3 class="success-title">Request sent!</h3>
+        <p class="success-body">Thank you. We will be in touch within one business day to confirm your call time. We look forward to speaking with you.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div data-reveal>
+        <div class="hero-tag">Fee-only advisors. No commissions. No conflicts.</div>
+        <h1>Your money should work as hard as <em>you</em> do.</h1>
+        <p class="hero-body">At Arth Path Financial, we work exclusively for families. Not for brokerage firms, not for insurance companies and not for anyone who pays us a commission. We answer to you, and only you.</p>
+        <div class="hero-btns">
+          <button class="btn-primary book-trigger">Book a Free Call</button>
+          <a href="#services" class="btn-ghost">See how we work</a>
+        </div>
+      </div>
+      <div class="hero-visual" data-reveal>
+        <div class="hero-card">
+          <div class="hero-card-label">What we help families with</div>
+          <div class="hero-pillars">
+            <div class="hero-pillar">
+              <div class="pillar-icon">📋</div>
+              <div class="pillar-text">
+                <strong>Financial Planning</strong>
+                <span>A clear written plan, not a brochure</span>
+              </div>
+            </div>
+
+            <div class="hero-pillar">
+              <div class="pillar-icon">🛡️</div>
+              <div class="pillar-text">
+                <strong>Protection Planning</strong>
+                <span>The right cover at the right cost</span>
+              </div>
+            </div>
+            <div class="hero-pillar">
+              <div class="pillar-icon">🏛️</div>
+              <div class="pillar-text">
+                <strong>Legacy Planning</strong>
+                <span>Making sure the right people benefit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-track">
+    <div class="trust-item"><div class="trust-dot"></div>Trusted by families across the United States</div>
+    <div class="trust-item"><div class="trust-dot"></div>Independent. No product sales.</div>
+    <div class="trust-item"><div class="trust-dot"></div>SEC Registered Investment Advisor</div>
+    <div class="trust-item"><div class="trust-dot"></div>Guiding Families. Protecting Today.</div>
+    <div class="trust-item"><div class="trust-dot"></div>Fee-only. Fiduciary.</div>
+    <div class="trust-item"><div class="trust-dot"></div>Securing Tomorrow.</div>
+    <div class="trust-item"><div class="trust-dot"></div>Trusted by families across the United States</div>
+    <div class="trust-item"><div class="trust-dot"></div>Independent. No product sales.</div>
+    <div class="trust-item"><div class="trust-dot"></div>SEC Registered Investment Advisor</div>
+    <div class="trust-item"><div class="trust-dot"></div>Guiding Families. Protecting Today.</div>
+    <div class="trust-item"><div class="trust-dot"></div>Fee-only. Fiduciary.</div>
+    <div class="trust-item"><div class="trust-dot"></div>Securing Tomorrow.</div>
+  </div>
+</div>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image" data-reveal>
+        <div class="about-img-box" style="background:none;padding:0;">
+          <img src="Rajeev_Logo.png" alt="Raj — Arth Path Financial" style="width:100%;height:100%;object-fit:cover;border-radius:6px;display:block;">
+        </div>
+        <div class="about-badge">
+          <strong>3+</strong>
+          Years of<br>experience
+        </div>
+      </div>
+      <div data-reveal>
+        <div class="eyebrow">A little about us</div>
+        <h2 class="sec-title">Good advice feels different when nobody is paying us to sell you something.</h2>
+        <p class="about-body">I spent years watching families get sold products that were good for the advisor and not for them. Annuities with surrender charges buried in the fine print. Whole life policies pushed on people who needed term. Mutual funds chosen because they paid the highest commission that month.</p>
+        <p class="about-body">I founded Arth Path Financial because families deserve better than that. We are a fee-only advisory firm. We charge you directly and transparently, so we are never tempted to recommend anything that does not serve you.</p>
+        <p class="about-body">We work with a limited number of families at a time. That is intentional. Every family we work with gets our full attention.</p>
+        <a href="#process" class="about-link">See how we work together</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container" data-reveal>
+    <div class="eyebrow">The real problem most families face</div>
+    <h2 class="problem-title">Your 401(k), your IRA, your brokerage account, your life insurance. Nobody is looking at all of it together.</h2>
+    <div class="problem-body">
+      <p>Most families we meet have money spread across eight or ten different places. A 401(k) from a job three employers ago. A Roth IRA that has not been touched in years. A whole life policy a friend sold them a decade back. A brokerage account with no real strategy behind it.</p>
+      <p>Your broker at the big wirehouse is helpful. But he has a sales quota. And that changes what advice he gives you. Nobody is looking at your complete picture and telling you honestly where you stand.</p>
+      <p>That is what we do.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header" data-reveal>
+      <div class="eyebrow">What we do</div>
+      <h2 class="sec-title">We look at your entire financial life. Not just your investments.</h2>
+      <p class="sec-intro">Your investments affect your taxes. Your insurance protects your income. Your estate planning protects your family. These things are connected and they need to be looked at together.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-reveal>
+        <div class="svc-num">01</div>
+        <div class="svc-line"></div>
+        <h3 class="svc-title">Financial Planning</h3>
+        <p class="svc-desc">A written plan that maps your income, your assets, your goals and your timeline. Not a one-time document. Something we revisit with you every year as your life changes.</p>
+      </div>
+      <div class="service-card" data-reveal>
+        <div class="svc-num">02</div>
+        <div class="svc-line"></div>
+        <h3 class="svc-title">Insurance and Protection</h3>
+        <p class="svc-desc">We review what you have and tell you what you actually need. Most families are either underinsured on term life or paying for expensive whole life they were sold. We sort that out honestly.</p>
+      </div>
+      <div class="service-card" data-reveal>
+        <div class="svc-num">04</div>
+        <div class="svc-line"></div>
+        <h3 class="svc-title">Legacy and Estate</h3>
+        <p class="svc-desc">Wills, beneficiary designations, trusts, powers of attorney. Making sure that when the time comes, your wealth goes to the right people without probate delays, family disputes or unnecessary estate tax.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="process-header" data-reveal>
+      <div class="eyebrow">How we get started</div>
+      <h2 class="sec-title">Four steps. No paperwork before we have even spoken.</h2>
+    </div>
+    <p class="process-sub">We keep the process simple because the advice itself is where the work happens.</p>
+    <div class="process-steps">
+      <div class="process-step" data-reveal>
+        <div class="step-num">01</div>
+        <div>
+          <h3 class="step-title">A 30-minute call</h3>
+          <p class="step-desc">We get to know each other. You tell us about your situation. We tell you honestly whether we can help and whether we are the right fit. No commitment from either side.</p>
+        </div>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="step-num">02</div>
+        <div>
+          <h3 class="step-title">A full financial review</h3>
+          <p class="step-desc">We look at everything. Your income, your assets, your liabilities, your existing insurance, your tax situation and what you are trying to build. We put together a complete picture before we suggest anything.</p>
+        </div>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="step-num">03</div>
+        <div>
+          <h3 class="step-title">Your written family plan</h3>
+          <p class="step-desc">We give you a clear written plan covering investments, insurance, tax and legacy. Every recommendation is explained. You understand exactly what we are doing and why.</p>
+        </div>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="step-num">04</div>
+        <div>
+          <h3 class="step-title">We stay with you</h3>
+          <p class="step-desc">We review your plan with you every year. When your life changes, we adjust. You have a direct line to us. Not a helpdesk. Not a different person every time you call.</p>
+        </div>
+      </div>
+    </div>
+    <div class="process-cta">
+      <button class="btn-primary book-trigger" style="background:#1B3A6B;border:none;cursor:pointer">Book a free call</button>
+      <p class="process-cta-note">30 minutes. No obligation. No sales pitch.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div data-reveal>
+      <div class="eyebrow">By the numbers</div>
+      <h2 class="stats-title">A practice built on referrals. Not on advertising.</h2>
+      <p class="stats-intro">Most of our new clients come from existing clients who recommended us. We think that says more about the quality of our work than any number we could put on a website.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card" data-reveal>
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Years of experience</div>
+      </div>
+      <div class="stat-card" data-reveal>
+        <div class="stat-number">90%</div>
+        <div class="stat-label">Client retention rate</div>
+      </div>
+      <div class="stat-card" data-reveal>
+        <div class="stat-number">$5M+</div>
+        <div class="stat-label">Assets under advisory</div>
+      </div>
+      <div class="stat-card" data-reveal>
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Families served</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonials-header" data-reveal>
+      <div class="eyebrow">What our clients say</div>
+      <h2 class="sec-title">We do not ask for testimonials. These came on their own.</h2>
+    </div>
+  </div>
+  <div style="overflow:hidden;">
+    <div class="test-track">
+      <div class="test-card">
+        <p class="test-quote">For the first time in years I actually know where I stand financially. My previous advisor at the wirehouse would send quarterly reports I could not understand. Arth Path sits with me and explains everything until it makes sense.</p>
+        <div class="test-attr">Small business owner, Austin TX. Client since 2023.</div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">I had a whole life policy I had been paying into for 11 years. They showed me the actual return I was getting and what I was giving up in fees. That single conversation more than paid for years of their advisory fee.</p>
+        <div class="test-attr">Senior engineer, Seattle WA. Client since 2022.</div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">My husband passed away last year. Because of the estate planning we had done, there were no complications. Everything transferred cleanly. I cannot explain how much stress that saved my family during an already very difficult time.</p>
+        <div class="test-attr">Retired teacher, mother of three, Denver CO. Client since 2021.</div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">I changed jobs three times in five years and had 401(k) accounts sitting at every old employer. They consolidated everything, explained my options clearly and set up a strategy I actually understand.</p>
+        <div class="test-attr">Marketing director, Chicago IL. Client since 2023.</div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">What I appreciated most was that they told me what I did not need. Every other advisor I met was trying to sell me something. These folks actually said no to a couple of products and explained exactly why. That built my trust immediately.</p>
+        <div class="test-attr">Physician, Charlotte NC. Client since 2022.</div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">We are a young couple just starting out and I assumed financial advisors were only for wealthy people. They showed us what to do right now with what we have so we are not starting from nothing at 50.</p>
+        <div class="test-attr">First-time homeowners, Portland OR. Client since 2024.</div>
+      </div>
+      <!-- duplicate for seamless loop -->
+      <div class="test-card">
+        <p class="test-quote">For the first time in years I actually know where I stand financially. My previous advisor at the wirehouse would send quarterly reports I could not understand. Arth Path sits with me and explains everything until it makes sense.</p>
+        <div class="test-attr">Small business owner, Austin TX. Client since 2023.</div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">I had a whole life policy I had been paying into for 11 years. They showed me the actual return I was getting and what I was giving up in fees. That single conversation more than paid for years of their advisory fee.</p>
+        <div class="test-attr">Senior engineer, Seattle WA. Client since 2022.</div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">My husband passed away last year. Because of the estate planning we had done, there were no complications. Everything transferred cleanly. I cannot explain how much stress that saved my family during an already very difficult time.</p>
+        <div class="test-attr">Retired teacher, mother of three, Denver CO. Client since 2021.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQs -->
+<section class="faqs" id="faqs">
+  <div class="container">
+    <div class="faqs-grid">
+      <div data-reveal>
+        <div class="eyebrow">Common questions</div>
+        <h2 class="sec-title faqs-sidebar" style="font-size:28px;">Questions we get asked before people reach out.</h2>
+        <p style="font-size:15px;color:var(--muted);margin-top:14px;line-height:1.8;">These are the right questions to ask. We would rather answer them here than have them stop you from picking up the phone.</p>
+        <br>
+        <button class="btn-primary book-trigger" style="background:#1B3A6B;border:none;cursor:pointer;display:inline-block">Book a free call</button>
+      </div>
+      <div class="faq-list" data-reveal>
+        <div class="faq-item">
+          <div class="faq-q">Who do you work with? <div class="faq-icon">+</div></div>
+          <div class="faq-a">Mostly working families, business owners and salaried professionals who feel like their finances are scattered and nobody is looking at the whole picture. Some of our clients are quite wealthy. Others are just starting to build. What they have in common is that they want honest, independent advice and not someone trying to sell them something.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do you charge? <div class="faq-icon">+</div></div>
+          <div class="faq-a">We charge a transparent fee that we agree with you upfront. Depending on your situation this may be a flat advisory fee, an annual retainer or a percentage of assets under management. We do not earn any commissions, referral fees or trail income from any product. What you pay us is what we earn. Nothing else.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What is a fiduciary and why should I care? <div class="faq-icon">+</div></div>
+          <div class="faq-a">A fiduciary is legally required to act in your interest. Not in their own interest. Not in their firm's interest. Yours. Most brokers and financial salespeople in the US operate under a suitability standard, which simply means what they recommend has to be broadly suitable for you. It does not mean it has to be the best option available. As a registered investment advisor, we are held to a fiduciary standard at all times. That is a meaningful and important difference.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do I need a certain amount of money to work with you? <div class="faq-icon">+</div></div>
+          <div class="faq-a">We do not have a strict minimum. What matters more is whether you are serious about your financial future and whether we can genuinely add value. The first call costs you nothing. If it turns out we are not the right fit, we will say so honestly and point you in a direction that works better for your situation.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How is this different from my bank's relationship manager? <div class="faq-icon">+</div></div>
+          <div class="faq-a">Your broker or advisor at a large firm is employed by that firm. Their job is to serve the firm's interests while also being helpful to you. Those two things are often in conflict. They have products to sell, minimums to hit and managers watching their numbers. We have none of that. We only work for you, and the only way we stay in business is if you find enough value to keep paying us directly. That changes everything about the advice you receive.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do we get started? <div class="faq-icon">+</div></div>
+          <div class="faq-a">Book a 30-minute call using the button on this page. We will talk about your situation, ask some questions and tell you honestly whether we think we can help. No paperwork before that call. No commitment after it. Just a conversation to see if it makes sense to work together.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <div class="container" data-reveal>
+    <div class="cta-eyebrow">Ready to take the first step?</div>
+    <h2 class="cta-title">You have spent years building this. Let us help you make sure it goes where you intend it to.</h2>
+    <p class="cta-body">One 30-minute call. We ask questions, you ask questions, and we both decide honestly if this makes sense.</p>
+    <button class="btn-primary book-trigger" style="border:none;cursor:pointer">Book a free call</button>
+    <p class="cta-note">No obligation. No sales pitch. Just a conversation.</p>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#">
+        <img src="Arth_logo.png" alt="Arth Path Financial" style="height:68px;width:auto;display:block;">
+      </a>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="services.html">Services</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="https://www.linkedin.com/company/arth-path-financial/" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background .2s;" onmouseover="this.style.background='rgba(196,154,46,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="12" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://www.instagram.com/arthpathfinancial/" target="_blank" rel="noopener" aria-label="Instagram" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background .2s;" onmouseover="this.style.background='rgba(196,154,46,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="footer-copy">© 2026 Arth Path Financial</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  /* Scroll reveal */
+  const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); }), { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(el => ro.observe(el));
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  /* Active nav */
+  const secs = document.querySelectorAll('section[id]');
+  const nls  = document.querySelectorAll('.nav-links a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+    nls.forEach(a => { a.style.color = a.getAttribute('href') === `#${cur}` ? 'var(--gold2)' : ''; });
+  });
+
+  /* Mobile hamburger */
+  const hb  = document.getElementById('hamburger');
+  const mnv = document.getElementById('mobileNav');
+  hb.addEventListener('click', () => {
+    mnv.classList.toggle('open');
+    const sp = hb.querySelectorAll('span');
+    if (mnv.classList.contains('open')) {
+      sp[0].style.cssText = 'transform:rotate(45deg) translate(5px,5px)';
+      sp[1].style.cssText = 'opacity:0';
+      sp[2].style.cssText = 'transform:rotate(-45deg) translate(5px,-5px)';
+    } else {
+      sp.forEach(s => s.style.cssText = '');
+    }
+  });
+  mnv.querySelectorAll('.mob-link').forEach(a => {
+    a.addEventListener('click', () => { mnv.classList.remove('open'); hb.querySelectorAll('span').forEach(s => s.style.cssText = ''); });
+  });
+
+  /* Modal */
+  const modal    = document.getElementById('bookingModal');
+  const closeBtn = document.getElementById('modalClose');
+  const openModal  = () => { modal.classList.add('active'); document.body.style.overflow = 'hidden'; };
+  const closeModal = () => { modal.classList.remove('active'); document.body.style.overflow = ''; };
+  document.querySelectorAll('.book-trigger').forEach(b => b.addEventListener('click', openModal));
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  /* Form submit */
+  document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const req = this.querySelectorAll('[required]');
+    let ok = true;
+    req.forEach(f => { f.style.borderColor = ''; if (!f.value.trim()) { f.style.borderColor = '#c0392b'; ok = false; } });
+    if (!ok) return;
+    const submitBtn = this.querySelector('.form-submit');
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+    try {
+      const response = await fetch('https://formspree.io/f/mqeojvlq', {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        this.style.display = 'none';
+        document.getElementById('formSuccess').classList.add('show');
+        setTimeout(() => { this.style.display = ''; this.reset(); document.getElementById('formSuccess').classList.remove('show'); submitBtn.textContent = 'Send My Request'; submitBtn.disabled = false; }, 6000);
+      } else {
+        submitBtn.textContent = 'Send My Request';
+        submitBtn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      submitBtn.textContent = 'Send My Request';
+      submitBtn.disabled = false;
+      alert('Network error. Please try again.');
+    }
+  });
+</script>
+</body>
+</html>
