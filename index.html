@@ -250,6 +250,87 @@ document.addEventListener('DOMContentLoaded', async function() {
           }
           var heroBadge = homeHero.firstElementChild;
           if (heroBadge) heroBadge.style.transform = 'translateY(16px)';
+          var heroButtons = Array.from(homeHero.children).find(function (element) {
+            return element.tagName === 'DIV' && element.querySelector('button') && element.querySelector('a');
+          });
+          if (heroButtons) heroButtons.id = 'heroButtons';
+        }
+
+        if (!document.getElementById('mobileResponsiveStyles')) {
+          var mobileStyles = document.createElement('style');
+          mobileStyles.id = 'mobileResponsiveStyles';
+          mobileStyles.textContent = '#mobileMenuToggle{display:none;}#mobileMenuCheckbox{display:none;}' + '@media (max-width: 760px) {' +
+            'html,body{overflow-x:hidden!important;}' +
+            'nav > div{padding:12px 20px!important;position:relative!important;}' +
+            'nav > div > div:first-child{gap:8px!important;}' +
+            '#mobileMenuToggle{display:inline-flex!important;align-items:center;justify-content:center;width:42px;height:42px;border:0;border-radius:12px;background:#E7EEE9;color:#1F4D3D;font-size:23px;line-height:1;cursor:pointer;}' +
+            '.site-nav-links{display:none!important;position:absolute!important;top:100%!important;left:0!important;right:0!important;z-index:60!important;flex-direction:column!important;align-items:stretch!important;gap:2px!important;padding:14px 20px 20px!important;background:#FBFAF7!important;border-bottom:1px solid rgba(31,77,61,.12)!important;box-shadow:0 14px 28px rgba(22,32,28,.12)!important;}' +
+            '#mobileMenuCheckbox:checked + .site-nav-links{display:flex!important;}' +
+            '.site-nav-links a{padding:11px 0!important;font-size:15px!important;}' +
+            '.site-nav-links button{width:100%!important;margin-top:8px!important;padding:13px 18px!important;}' +
+            'nav + section{padding:76px 20px 145px!important;background-position:center,center 86%!important;}' +
+            'nav + section > div:first-child{transform:translateY(0)!important;margin-bottom:18px!important;font-size:12px!important;}' +
+            'nav + section h1{max-width:640px!important;font-size:clamp(36px,10vw,48px)!important;line-height:1.08!important;}' +
+            'nav + section > p{font-size:16px!important;line-height:1.55!important;}' +
+            '#heroButtons{flex-direction:column!important;align-items:stretch!important;gap:10px!important;max-width:300px!important;margin-left:auto!important;margin-right:auto!important;}' +
+            '#heroButtons > *{justify-content:center!important;width:100%!important;padding:14px 20px!important;}' +
+            '#services,#how,#faq{padding:64px 20px!important;}' +
+            '#services h2,#how h2,#faq h2{font-size:31px!important;}' +
+            '#services > div:nth-child(2){padding-left:0!important;}' +
+            '#services > div:nth-child(2)>div:first-child{left:21px!important;}' +
+            '#services > div:nth-child(2)>div:last-child>div{grid-template-columns:44px minmax(0,1fr)!important;gap:14px!important;}' +
+            '#services > div:nth-child(2)>div:last-child>div>div:first-child>div{width:44px!important;height:44px!important;border-radius:13px!important;font-size:14px!important;}' +
+            '#services > div:nth-child(2)>div:last-child>div>div:last-child{padding:22px 18px!important;border-radius:16px!important;}' +
+            '#services > div:nth-child(2)>div:last-child h3{font-size:21px!important;}' +
+            '#how > div:last-child{grid-template-columns:1fr!important;}' +
+            '#how > div:last-child > div{min-height:0!important;padding:26px!important;}' +
+            '#clientTestimonials > div{padding:64px 20px!important;}' +
+            '#clientTestimonials > div > div:last-child{grid-template-columns:1fr!important;}' +
+            '#clientTestimonials > div > div:last-child > div{padding:24px!important;}' +
+            '#about > div{grid-template-columns:1fr!important;gap:30px!important;padding:64px 20px!important;}' +
+            '#about h2{font-size:32px!important;}' +
+            '#independence{padding:64px 20px 0!important;}' +
+            '#independence h2,#compensation h2{font-size:31px!important;}' +
+            '#compensation{padding:26px 20px 64px!important;}' +
+            '#compensation > div{padding:36px 20px!important;border-radius:20px!important;}' +
+            '#paymentPoints{grid-template-columns:1fr!important;}' +
+            '#paymentPoints > div{grid-column:auto!important;}' +
+            '#consultationModal{padding:14px!important;}' +
+            '#consultationModal > div{padding:30px 20px!important;border-radius:20px!important;}' +
+            '#consultationModal form > div:first-child{grid-template-columns:1fr!important;}' +
+            'footer > div{padding:42px 20px 26px!important;}' +
+          '}';
+          document.head.appendChild(mobileStyles);
+        }
+
+        var testimonialsSection = Array.from(document.querySelectorAll('section')).find(function (section) {
+          return section.textContent.indexOf('What Clients Say') >= 0;
+        });
+        if (testimonialsSection) testimonialsSection.id = 'clientTestimonials';
+
+        var siteNav = document.querySelector('nav');
+        if (siteNav && !document.getElementById('mobileMenuToggle')) {
+          var navInner = siteNav.firstElementChild;
+          var navLinks = navInner && navInner.lastElementChild;
+          if (navLinks) {
+            navLinks.id = 'mobileNavigation';
+            navLinks.classList.add('site-nav-links');
+            var menuCheckbox = document.createElement('input');
+            menuCheckbox.id = 'mobileMenuCheckbox';
+            menuCheckbox.type = 'checkbox';
+            menuCheckbox.setAttribute('aria-hidden', 'true');
+            navInner.insertBefore(menuCheckbox, navLinks);
+            var menuToggle = document.createElement('label');
+            menuToggle.id = 'mobileMenuToggle';
+            menuToggle.htmlFor = 'mobileMenuCheckbox';
+            menuToggle.setAttribute('aria-label', 'Open navigation menu');
+            menuToggle.setAttribute('aria-controls', 'mobileNavigation');
+            menuToggle.textContent = '☰';
+            navLinks.addEventListener('click', function () {
+              menuCheckbox.checked = false;
+            });
+            navInner.appendChild(menuToggle);
+          }
         }
 
         function openConsultation(event) {
