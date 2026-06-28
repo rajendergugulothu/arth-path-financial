@@ -3,187 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Arth Path Financial</title>
-<meta name="description" content="Book a free 30-minute discovery call with Arth Path Financial. No obligation, no sales pitch.">
+<title>Schedule a Consultation — Arth Path Financial</title>
+<meta name="description" content="Schedule a free, no-obligation consultation with Arth Path Financial — independent life, health and annuity planning. I respond within one business day.">
+<meta name="theme-color" content="#0D2347">
+<link rel="icon" type="image/png" href="Arth_logo.png">
+<link rel="apple-touch-icon" href="Arth_logo.png">
+<link rel="canonical" href="https://arthpathfinancial.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arth Path Financial">
+<meta property="og:url" content="https://arthpathfinancial.com/contact.html">
+<meta property="og:title" content="Schedule a Consultation — Arth Path Financial">
+<meta property="og:description" content="A first conversation costs you nothing and obligates you to nothing.">
+<meta property="og:image" content="https://arthpathfinancial.com/Arth_logo.png">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --green: #1B3A6B; --green2: #0D2347; --gold: #C49A2E; --gold2: #D9AF52; --cream: #EEF3FB; --white: #FFFFFF; --text: #0D1B2E; --muted: #5A6F8A; --border: #D4DEF0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; color: var(--text); background: var(--white); overflow-x: hidden; }
-  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
-  a { color: inherit; text-decoration: none; }
-  img { max-width: 100%; display: block; }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,35,71,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(196,154,46,0.18); }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1100px; margin: 0 auto; }
-  .nav-links { display: flex; align-items: center; gap: 28px; }
-  .nav-links a { color: rgba(255,255,255,0.78); font-size: 14px; font-weight: 500; transition: color .2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--gold2); }
-  .nav-cta { background: var(--gold); color: var(--white); padding: 10px 22px; border-radius: 4px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: background .2s; }
-  .nav-cta:hover { background: var(--gold2); }
-  .nav-hamburger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
-  .nav-hamburger span { display: block; width: 24px; height: 2px; background: white; margin: 5px 0; }
-  .mobile-nav { display: none; flex-direction: column; background: #0D2347; border-top: 1px solid rgba(196,154,46,0.12); padding: 12px 24px 20px; }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a { color: rgba(255,255,255,0.78); font-size: 15px; font-weight: 500; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .mobile-nav .mob-cta { margin-top: 14px; background: var(--gold); color: white; padding: 13px; border-radius: 4px; text-align: center; font-weight: 600; font-size: 15px; border: none; cursor: pointer; }
-
-  /* PAGE HERO */
-  .page-hero { background: var(--green2); padding: 140px 0 80px; position: relative; overflow: hidden; }
-  .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 40%, rgba(196,154,46,0.08) 0%, transparent 65%); }
-  .page-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold2); margin-bottom: 16px; }
-  .page-title { font-size: clamp(32px, 4.5vw, 54px); color: white; font-weight: 700; margin-bottom: 18px; max-width: 640px; }
-  .page-intro { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.85; max-width: 560px; }
-
-  /* CONTACT SECTION */
-  .contact-section { padding: 96px 0; background: var(--cream); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-
-  /* INFO SIDE */
-  .contact-info h2 { font-size: 30px; color: var(--green); margin-bottom: 16px; }
-  .contact-info p { font-size: 16px; color: var(--muted); line-height: 1.85; margin-bottom: 36px; }
-  .contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
-  .contact-icon { width: 42px; height: 42px; border-radius: 8px; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-  .contact-label { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-  .contact-value { font-size: 15px; color: var(--text); font-weight: 500; }
-  .contact-value a { color: var(--green); border-bottom: 1px solid transparent; transition: border-color .2s; }
-  .contact-value a:hover { border-color: var(--gold); }
-  .contact-note { margin-top: 36px; padding: 20px 24px; background: var(--white); border-left: 3px solid var(--gold); border-radius: 4px; font-size: 14px; color: var(--muted); line-height: 1.7; }
-
-  /* FORM SIDE */
-  .contact-form-box { background: var(--white); border-radius: 10px; padding: 40px 36px; border: 1px solid var(--border); }
-  .form-heading { font-size: 22px; color: var(--green); margin-bottom: 6px; }
-  .form-subhead { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
-  .form-group { margin-bottom: 16px; }
-  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--green); margin-bottom: 5px; }
-  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 13px; border: 1.5px solid var(--border); border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text); background: var(--white); outline: none; transition: border-color .2s; appearance: none; }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
-  .form-group textarea { resize: vertical; min-height: 100px; }
-  .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235A6F8A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; padding-right: 34px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .form-submit { width: 100%; padding: 15px; background: var(--gold); color: white; border: none; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .2s, transform .15s; margin-top: 4px; }
-  .form-submit:hover { background: var(--gold2); transform: translateY(-1px); }
-  .form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
-  .form-success { display: none; text-align: center; padding: 40px 0; }
-  .form-success.show { display: block; }
-  .success-icon { font-size: 52px; margin-bottom: 16px; }
-  .success-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--green); margin-bottom: 10px; }
-  .success-body { font-size: 15px; color: var(--muted); line-height: 1.7; }
-
-  footer { background: var(--green2); border-top: 1px solid rgba(196,154,46,0.18); padding: 40px 0; }
-  .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-  .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
-  .footer-links a { color: rgba(255,255,255,0.48); font-size: 13px; transition: color .2s; }
-  .footer-links a:hover { color: var(--gold2); }
-  .footer-copy { color: rgba(255,255,255,0.28); font-size: 12px; }
-
-  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 44px; } .nav-links { display: none; } .nav-hamburger { display: block; } }
-  @media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .form-row { grid-template-columns: 1fr; } }
-  [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
-  [data-reveal].revealed { opacity: 1; transform: none; }
-</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav>
+<!-- NAV -->
+<nav id="nav" class="solid">
   <div class="nav-inner">
-    <a href="index.html"><img src="Arth_logo.png" alt="Arth Path Financial" style="height:62px;width:auto;display:block;"></a>
+    <a href="index.html" aria-label="Arth Path Financial home"><img src="Arth_logo.png" alt="Arth Path Financial" style="height:60px;width:auto;"></a>
     <div class="nav-links">
-      <a href="index.html#about">About</a>
-      <a href="services.html">Services</a>
+      <a href="services.html">Planning Areas</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="index.html#compensation">Compensation</a>
       <a href="faqs.html">FAQs</a>
       <a href="contact.html" class="active">Contact</a>
-      <button class="nav-cta" onclick="document.querySelector('.contact-form-box').scrollIntoView({behavior:'smooth'})">Book a Free Call</button>
+      <a href="#book" class="btn btn-gold btn-sm">Schedule a Consultation</a>
     </div>
-    <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-nav" id="mobileNav">
-    <a href="index.html#about">About</a>
-    <a href="services.html">Services</a>
+    <a href="services.html">Planning Areas</a>
+    <a href="index.html#how">How It Works</a>
+    <a href="index.html#compensation">Compensation</a>
     <a href="faqs.html">FAQs</a>
     <a href="contact.html">Contact</a>
-    <button class="mob-cta" onclick="document.querySelector('.contact-form-box').scrollIntoView({behavior:'smooth'})">Book a Free Call</button>
+    <a href="#book" class="btn btn-gold">Schedule a Consultation</a>
   </div>
 </nav>
 
-<div class="page-hero">
+<!-- PAGE HERO -->
+<header class="page-hero">
   <div class="container">
-    <div class="page-eyebrow">Get in touch</div>
-    <h1 class="page-title">Let's talk. No obligation, no sales pitch.</h1>
-    <p class="page-intro">Fill out the form and we will reach out within one business day to schedule your free 30-minute discovery call.</p>
+    <div class="eyebrow">Get in touch</div>
+    <h1>Let's talk. No obligation, no sales pitch.</h1>
+    <p>Fill out the form and I'll reach out within one business day to schedule your free consultation. A first conversation costs you nothing and obligates you to nothing.</p>
   </div>
-</div>
+</header>
 
-<section class="contact-section">
+<!-- CONTACT -->
+<section class="bg-ivory">
   <div class="container">
     <div class="contact-grid">
 
-      <div class="contact-info" data-reveal>
-        <h2>We would love to hear from you.</h2>
-        <p>Whether you have a specific financial question or just want to understand what working with an independent advisor actually looks like, the first conversation costs you nothing.</p>
+      <div class="contact-info reveal">
+        <h2>Bring me your situation.</h2>
+        <p>Whether you have a specific question about retirement income, life insurance or Medicare — or you just want to understand what working with an independent producer looks like — the first conversation is free.</p>
 
         <div class="contact-detail">
-          <div class="contact-icon">✉️</div>
-          <div>
-            <div class="contact-label">Email</div>
-            <div class="contact-value"><a href="mailto:rajchau.prof@gmail.com">rajchau.prof@gmail.com</a></div>
-          </div>
+          <div class="contact-ico">📞</div>
+          <div><div class="contact-label">Phone</div><div class="contact-value"><a href="tel:+10000000000">[Phone Number]</a></div></div>
         </div>
-
         <div class="contact-detail">
-          <div class="contact-icon">📅</div>
-          <div>
-            <div class="contact-label">Response time</div>
-            <div class="contact-value">Within one business day</div>
-          </div>
+          <div class="contact-ico">✉️</div>
+          <div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:rajchau.prof@gmail.com">rajchau.prof@gmail.com</a></div></div>
         </div>
-
         <div class="contact-detail">
-          <div class="contact-icon">🇺🇸</div>
-          <div>
-            <div class="contact-label">Where we work</div>
-            <div class="contact-value">Serving families across the United States</div>
-          </div>
+          <div class="contact-ico">📍</div>
+          <div><div class="contact-label">Office</div><div class="contact-value">[Office Address]</div></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-ico">📅</div>
+          <div><div class="contact-label">Response time</div><div class="contact-value">Within one business day</div></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-ico">🪪</div>
+          <div><div class="contact-label">Licensing</div><div class="contact-value">NPN [00000000] · Licensed in [State]</div></div>
         </div>
 
-        <div class="contact-note">
-          We do not cold call, we do not pressure, and we do not sell products. If after our first call we are not the right fit for each other, we will tell you honestly and point you in a better direction.
+        <div class="contact-callout">
+          I don't cold call and I don't pressure. Nothing is signed before you've seen a real comparison. If we're not the right fit, I'll tell you honestly and point you in a better direction.
         </div>
       </div>
 
-      <div class="contact-form-box" data-reveal>
-        <h2 class="form-heading">Book your discovery call</h2>
-        <p class="form-subhead">Free 30-minute call. No commitment required.</p>
-        <form id="contactForm" action="https://formspree.io/f/mqeojvlq" method="POST" novalidate>
+      <div class="form-box reveal" id="book">
+        <h2>Schedule your consultation</h2>
+        <p class="sub">Free initial consultation. No commitment required.</p>
+        <form id="contactForm" class="js-form" action="https://formspree.io/f/mqeojvlq" method="POST" novalidate>
           <div class="form-row">
-            <div class="form-group"><label>First name *</label><input type="text" name="first_name" placeholder="Raj" required></div>
-            <div class="form-group"><label>Last name *</label><input type="text" name="last_name" placeholder="Sharma" required></div>
+            <div class="form-group"><label for="fname">First name *</label><input type="text" id="fname" name="first_name" placeholder="Raj" required></div>
+            <div class="form-group"><label for="lname">Last name *</label><input type="text" id="lname" name="last_name" placeholder="Sharma" required></div>
           </div>
-          <div class="form-group"><label>Email address *</label><input type="email" name="email" placeholder="raj@example.com" required></div>
-          <div class="form-group"><label>Phone number *</label><input type="tel" name="phone" placeholder="+1 (555) 000-0000" required></div>
+          <div class="form-group"><label for="femail">Email address *</label><input type="email" id="femail" name="email" placeholder="raj@example.com" required></div>
+          <div class="form-group"><label for="fphone">Phone number *</label><input type="tel" id="fphone" name="phone" placeholder="+1 (555) 000-0000" required></div>
           <div class="form-group">
-            <label>What would you like to discuss?</label>
-            <select name="topic">
+            <label for="ftopic">What would you like to discuss?</label>
+            <select id="ftopic" name="topic">
               <option value="">Select a topic</option>
-              <option>Retirement Planning (401k / IRA)</option>
-              <option>Investment Portfolio Review</option>
-              <option>Insurance and Protection</option>
-              <option>Estate and Legacy Planning</option>
-              <option>General Financial Planning</option>
-              <option>Other</option>
+              <option>Retirement &amp; income planning</option>
+              <option>Annuities</option>
+              <option>Life insurance</option>
+              <option>Kids' education funding</option>
+              <option>Tax-efficient strategy</option>
+              <option>Medicare &amp; health planning</option>
+              <option>Long-term care &amp; legacy</option>
+              <option>General questions</option>
             </select>
           </div>
-          <div class="form-group"><label>Anything you would like us to know beforehand?</label><textarea name="message" placeholder="Tell us a little about your situation..."></textarea></div>
-          <button type="submit" class="form-submit">Send My Request</button>
-          <p class="form-note">We will respond within one business day to confirm your call time.</p>
+          <div class="form-group"><label for="fmsg">Anything you would like me to know beforehand?</label><textarea id="fmsg" name="message" placeholder="Tell me a little about your situation..."></textarea></div>
+          <button type="submit" class="btn btn-gold form-submit">Request My Consultation</button>
+          <p class="form-note">I will respond within one business day to confirm a time.</p>
         </form>
         <div class="form-success" id="formSuccess">
           <div class="success-icon">✅</div>
           <h3 class="success-title">Request received</h3>
-          <p class="success-body">We will be in touch within one business day to confirm your call time. Talk soon.</p>
+          <p class="success-body">Thank you. I will be in touch within one business day to confirm a time. Talk soon.</p>
         </div>
       </div>
 
@@ -191,48 +130,54 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="container">
-    <div class="footer-inner">
-      <a href="index.html"><img src="Arth_logo.png" alt="Arth Path Financial" style="height:68px;width:auto;display:block;"></a>
-      <div class="footer-links">
-        <a href="index.html#about">About</a>
-        <a href="services.html">Services</a>
+    <div class="footer-top">
+      <div>
+        <a href="index.html"><img src="Arth_logo.png" alt="Arth Path Financial" style="height:64px;width:auto;"></a>
+        <p class="footer-tagline">Independent life, health &amp; annuity planning. Licensed in [State] and [additional states].</p>
+        <div class="footer-social" style="margin-top:18px;">
+          <a href="https://www.linkedin.com/company/arth-path-financial/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="12" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="https://www.instagram.com/arthpathfinancial/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="rgba(255,255,255,0.75)" stroke-width="2"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="rgba(255,255,255,0.75)" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="services.html">Planning Areas</a>
+        <a href="index.html#process">New Client Process</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#compensation">Compensation Disclosure</a>
         <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact</a>
       </div>
-      <div style="display:flex;gap:14px;align-items:center;">
-        <a href="https://www.linkedin.com/company/arth-path-financial/" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background .2s;" onmouseover="this.style.background='rgba(196,154,46,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="9" width="4" height="12" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="https://www.instagram.com/arthpathfinancial/" target="_blank" rel="noopener" aria-label="Instagram" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background .2s;" onmouseover="this.style.background='rgba(196,154,46,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+10000000000">[Phone Number]</a>
+        <a href="mailto:rajchau.prof@gmail.com">rajchau.prof@gmail.com</a>
+        <p>[Office Address]</p>
       </div>
-      <div class="footer-copy">© 2026 Arth Path Financial</div>
+      <div class="footer-col">
+        <h4>Licensing</h4>
+        <p>NPN [00000000]</p>
+        <p>Licensed: [State list]</p>
+        <p>No securities license held</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Arth Path Financial. All rights reserved. · NPN [00000000]</div>
+      <div class="footer-copy"><a href="#" style="color:inherit;">Privacy Policy</a> · <a href="#" style="color:inherit;">Terms of Use</a></div>
+    </div>
+    <div class="legal">
+      <p>[Agency Legal Name] is an independent insurance agency. [Agent Full Legal Name] is a licensed insurance producer (NPN [00000000]) in [State], offering fixed life, health and annuity insurance products underwritten by third-party insurance carriers. [Agent Name] is not affiliated with, nor acting on behalf of, the U.S. government or any government agency, including the Centers for Medicare &amp; Medicaid Services (CMS) or the Social Security Administration.</p>
+      <p>Insurance products are not deposits, are not insured by the FDIC or any other federal government agency, and may lose value. Annuity guarantees are backed solely by the financial strength and claims-paying ability of the issuing insurance carrier.</p>
+      <p>[Agent Name] is not registered with the Financial Industry Regulatory Authority (FINRA), the U.S. Securities and Exchange Commission (SEC) or any state securities regulator, holds no securities license, and does not offer, sell or provide advice regarding securities. Nothing on this website is, or should be construed as, investment, legal or tax advice.</p>
+      <p>As a licensed producer, [Agent Name] is held to [State]'s insurance best-interest standard when making annuity and life insurance recommendations and is compensated by commission paid by the issuing carrier. This compensation does not result in any additional cost to the client.</p>
+      <p><strong>Medicare disclaimer (if applicable):</strong> We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov, 1-800-MEDICARE, or your local State Health Insurance Program (SHIP) to get information on all of your options.</p>
+      <p>This website is for general informational purposes only and does not constitute an offer to sell, or solicitation of an offer to buy, any insurance product in any jurisdiction where [Agent Name] is not licensed. Product availability, features and rates vary by carrier and state and are subject to change without notice.</p>
     </div>
   </div>
 </footer>
 
-<script>
-  const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); }), { threshold: 0.1 });
-  document.querySelectorAll('[data-reveal]').forEach(el => ro.observe(el));
-  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('open'));
-
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const req = this.querySelectorAll('[required]');
-    let ok = true;
-    req.forEach(f => { f.style.borderColor = ''; if (!f.value.trim()) { f.style.borderColor = '#c0392b'; ok = false; } });
-    if (!ok) return;
-    const submitBtn = this.querySelector('.form-submit');
-    submitBtn.textContent = 'Sending…'; submitBtn.disabled = true;
-    try {
-      const response = await fetch('https://formspree.io/f/mqeojvlq', { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } });
-      if (response.ok) { this.style.display = 'none'; document.getElementById('formSuccess').classList.add('show'); }
-      else { submitBtn.textContent = 'Send My Request'; submitBtn.disabled = false; alert('Something went wrong. Please try again.'); }
-    } catch { submitBtn.textContent = 'Send My Request'; submitBtn.disabled = false; alert('Network error. Please try again.'); }
-  });
-</script>
+<script src="app.js"></script>
 </body>
 </html>
